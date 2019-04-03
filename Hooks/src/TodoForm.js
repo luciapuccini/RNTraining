@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Input } from 'react-native-elements';
 
 // eslint-disable-next-line react/prop-types
 const TodoForm = ({ addTodo }) => {
@@ -9,7 +9,6 @@ const TodoForm = ({ addTodo }) => {
   const handleSubmit = event => {
     event.preventDefault();
     if (!value) return;
-    console.log('value', value);
     addTodo(value);
     setValue('');
   };
@@ -24,7 +23,6 @@ const TodoForm = ({ addTodo }) => {
         onChangeText={text => setValue(text)}
         onSubmitEditing={handleSubmit}
       />
-      {/* <Button title="Add" type="solid" containerStyle={{ paddingTop: 10 }} onPress={handleSubmit} /> */}
     </View>
   );
 };

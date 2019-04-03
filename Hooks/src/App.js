@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 
-import Todo from './Todo';
+import TodosList from './TodosList';
 import TodoForm from './TodoForm';
 
 const styles = StyleSheet.create({
@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  cardStyle: {
+    flex: 1,
   },
 });
 
@@ -44,18 +47,16 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text h3 style={styles.welcome}>
-        Welcome to RN with hooks!
-      </Text>
-      <Card>
-        {todos.map((todo, index) => (
-          <Todo key={index} todo={todo} />
-        ))}
-      </Card>
       <Text h4 style={styles.welcome}>
-        Todos Form
+        Todo's list
       </Text>
-      <TodoForm addTodo={addTodo} />
+      <TodosList todos={todos} />
+      <View style={styles.cardStyle}>
+        <Text h4 style={styles.welcome}>
+          Todos Form
+        </Text>
+        <TodoForm addTodo={addTodo} />
+      </View>
     </SafeAreaView>
   );
 };
