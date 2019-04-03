@@ -29,7 +29,7 @@ const App = () => {
   const [todos, setTodos] = useState([
     {
       text: 'Learn Hooks',
-      isCompleted: false,
+      isCompleted: true,
     },
     {
       text: 'Something',
@@ -44,13 +44,23 @@ const App = () => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+  const deleteTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text h4 style={styles.welcome}>
         Todo's list
       </Text>
-      <TodosList todos={todos} />
+      <TodosList todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} />
       <View style={styles.cardStyle}>
         <Text h4 style={styles.welcome}>
           Todos Form
