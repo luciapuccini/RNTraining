@@ -1,9 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
 const Todo = ({ index, todo }) => (
@@ -12,7 +11,7 @@ const Todo = ({ index, todo }) => (
     style={styles.textTitleStyle} 
     key={index} 
     title={todo.text} 
-    leftIcon={{name: 'bug-report' }} />
+    leftIcon={{name: 'bookmark' }} />
   </View>
 );
 
