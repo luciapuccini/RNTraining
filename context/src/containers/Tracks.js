@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { Text, Card, Button } from 'react-native-elements';
 
 import { Consumer } from '../components/Context';
@@ -9,8 +9,12 @@ class Tracks extends Component {
     return (
       <Consumer>
         {value => {
-          console.log(value);
-          return <Text />;
+          const { track_list } = value;
+          console.log(typeof track_list);
+          if (track_list) {
+            return <ActivityIndicator size="large" color="#FF8A80" />;
+          }
+          return <Text>Loaded</Text>;
         }}
       </Consumer>
     );
