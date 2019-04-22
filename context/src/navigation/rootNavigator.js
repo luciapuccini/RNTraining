@@ -9,7 +9,7 @@ import DetailScreen from '../containers/DetailScreen';
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    details: DetailScreen,
+    Details: DetailScreen,
   },
   {
     defaultNavigationOptions: {

@@ -10,12 +10,10 @@ export class Provider extends Component {
 
   componentDidMount() {
     fetch(
-      `https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=20&country=it&f_has_lyrics=1&apikey=${apikey}`
+      `https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${apikey}`
     )
       .then(response => response.json())
       .then(data => {
-        // FIXME: is object not array!
-        console.log(typeof data.message.body.track_list);
         this.setState({
           track_list: data.message.body.track_list,
         });
