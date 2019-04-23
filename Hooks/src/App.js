@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const [todos, setTodos, loading] = useFetch('https://jsonplaceholder.typicode.com/todos');
+  const [todos, loading, setTodos] = useFetch();
   const addTodo = title => {
     const newTodos = [...todos, { title }];
     setTodos(newTodos);

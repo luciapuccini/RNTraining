@@ -15,7 +15,7 @@ const Todo = ({ index, todo, completeTodo, deleteTodo }) => (
     />
     <ListItem
       style={styles.textTitleStyle}
-      titleStyle={todo.completed ? styles.decoration : ''}
+      titleStyle={todo.completed ? styles.decoration : { textDecorationLine: 'none' }}
       title={todo.title}
       leftIcon={{ name: 'bookmark' }}
     />

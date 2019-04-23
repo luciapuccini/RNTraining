@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = url => {
+const getFetchUrl = () => 'https://jsonplaceholder.typicode.com/todos';
+
+const useFetch = () => {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const fetchUrl = async () => {
-    const response = await fetch(url);
-    const json = await response.json();
-    setTodos(json);
-    setLoading(false);
-  };
-  useEffect(() => {
-    fetchUrl();
-  }, []);
-  return [todos, setTodos, loading];
-};
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(getFetchUrl());
+      const json = await response.json();
+
+      setTodos(json);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+  return [todos, loading, setTodos];
+};
 export { useFetch };

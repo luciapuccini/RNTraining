@@ -1,7 +1,6 @@
 {
   "extends": ["wesbos"],
   "rules": {
-    "react-hooks/exhaustive-deps": "off",
     "no-console": 2,
     "prettier/prettier": [
       "error",
