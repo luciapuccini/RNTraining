@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
-import { Card, Text } from 'react-native-elements';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
+import { StyleSheet, SafeAreaView, ActivityIndicator, View } from 'react-native';
+import { Text } from 'react-native-elements';
 
+import { useFetch } from './Hooks';
 import TodosList from './TodosList';
 import TodoForm from './TodoForm';
 
@@ -26,27 +28,14 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    {
-      text: 'Learn Hooks',
-      isCompleted: true,
-    },
-    {
-      text: 'Something',
-      isCompleted: false,
-    },
-    {
-      text: 'Something else',
-      isCompleted: false,
-    },
-  ]);
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
+  const [todos, setTodos, loading] = useFetch('https://jsonplaceholder.typicode.com/todos');
+  const addTodo = title => {
+    const newTodos = [...todos, { title }];
     setTodos(newTodos);
   };
   const completeTodo = index => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+    newTodos[index].completed = true;
     setTodos(newTodos);
   };
   const deleteTodo = index => {
@@ -60,7 +49,11 @@ const App = () => {
       <Text h4 style={styles.welcome}>
         Todo's list
       </Text>
-      <TodosList todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} />
+      {loading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <TodosList todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} />
+      )}
       <View style={styles.cardStyle}>
         <Text h4 style={styles.welcome}>
           Todos Form
