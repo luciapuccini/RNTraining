@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import Lyrics from '../components/Lyrics';
 
-const DetailScreen = () => (
+const DetailScreen = props => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Detail Screen</Text>
+    <Lyrics navigation={props.navigation} />
   </View>
 );
 

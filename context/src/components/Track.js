@@ -16,7 +16,11 @@ const Track = ({ track, navigation }) => {
         <Icon name="list" color="#37474f" />
         <Text>Album: {album_name}</Text>
       </View>
-      <Button title="View lyrics" type="solid" onPress={() => navigation.navigate('Details')} />
+      <Button
+        title="View lyrics"
+        type="solid"
+        onPress={() => navigation.navigate('Details', { itemId: track.track_id })}
+      />
     </Card>
   );
 };
